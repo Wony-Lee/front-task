@@ -1,24 +1,5 @@
-# promise-axios
+## 해야할 일
 
-## Project setup
 ```
-yarn install
+MenuList 상세 구현
 ```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
