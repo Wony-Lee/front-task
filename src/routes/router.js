@@ -3,10 +3,19 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-// import BodyContent from "../components/BodyContent";
-import menuList from "../components/MenuList";
+import BodyContent from "../components/BodyContent";
+// import MenuList from "../components/MenuList";
 
 export default new VueRouter({
     mode: "history",
-    routes: [{ path: "/menu/:menuId", components: menuList }],
+    routes: [
+        {
+            path: "/menu/:menuid",
+            components: BodyContent,
+        },
+        // {
+        //     path: "/:menuid",
+        //     components: BodyContent,
+        // },
+    ],
 });
