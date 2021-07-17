@@ -1,3 +1,5 @@
+const CustomPromise = require("./promise");
+
 Object.defineProperty(exports, "__esModule", { value: true });
 function isAxiosData(data) {
     if (data !== null) return false;
@@ -7,7 +9,7 @@ function isAxiosData(data) {
 const axios = {
     /* config */
     get(url) {
-        return new Promise((resolve, reject) => {
+        return new CustomPromise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (xhr.status >= 200 && xhr.status < 300) {
@@ -25,7 +27,7 @@ const axios = {
     },
     /* config */
     post(url, data) {
-        return new Promise((resolve, reject) => {
+        return new CustomPromise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (xhr.status >= 200 && xhr.status < 300) {
