@@ -13,16 +13,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.Container {
-    display: flex;
-    border: 1px solid blue;
-}
-.Container .SideBar {
-    width: 25%;
-    border: 1px solid green;
-}
-.Container .BodySection {
-    width: 75%;
-}
-</style>
+<style></style>

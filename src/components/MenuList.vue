@@ -1,8 +1,12 @@
 <template>
     <div class="menuList">
-        <div>
+        <div class="menuStyle">
             <div>
-                <select v-on:change="fn_changeRoute" :value="this.pageValue">
+                <select
+                    class="selectStyle"
+                    v-on:change="fn_changeRoute"
+                    :value="this.pageVal"
+                >
                     <option
                         v-for="(item, num) in getMenuList"
                         :key="item.id"
@@ -14,7 +18,6 @@
             </div>
             <div>
                 <ul v-for="(item, num) in getMenuList" :key="item.id">
-                    <!-- <router-link :to="item.id"> -->
                     <li
                         @click="fn_changeRoute"
                         :class="selectMenu === '/' + item.id ? sample : ''"
@@ -22,7 +25,6 @@
                     >
                         {{ item.title }}
                     </li>
-                    <!-- </router-link> -->
                 </ul>
             </div>
         </div>
@@ -39,7 +41,7 @@ export default {
     data() {
         return {
             sample: "orange",
-            pageValue: this.pageValue,
+            pageVal: this.pageValue,
         };
     },
     computed: {
@@ -55,29 +57,17 @@ export default {
         },
         fn_changeRoute(e) {
             const valueCounter = Number(e.target.value);
-            console.log(typeof valueCounter);
-            if (valueCounter === 0) {
-                this.$router.push({ path: this.getMenuList[0].id });
-                this.pageValue = 0;
-            } else if (valueCounter === 1) {
-                this.$router.push({ path: this.getMenuList[1].id });
-                this.pageValue = 1;
-            } else if (valueCounter === 2) {
-                this.$router.push({ path: this.getMenuList[2].id });
-                this.pageValue = 2;
-            } else {
-                this.$router.push({ path: "/" });
+            for (let i = 0; i < 3; i++) {
+                const result = `/${this.getMenuList[i].id}`;
+                if (result !== this.$route.path)
+                    if (valueCounter === i) {
+                        this.$router.push({ path: this.getMenuList[i].id });
+                        this.pageVal = i;
+                    }
             }
-
-            //this.$router.push({ path: this.getMenuList[1].id });
         },
     },
     components: { BodyContent },
-    mounted() {
-        console.log(this.$router);
-        console.log(this.$route);
-    },
-
     created() {
         const callMenuList = () => {
             this.$store.dispatch("fetchMenuList");
@@ -90,19 +80,36 @@ export default {
 <style scoped>
 .menuList {
     display: flex;
-    border: 1px solid red;
+    border: 1px soild red;
 }
 .Section {
-    margin-left: 7.8%;
-    width: 75%;
-    border: 1px solid blue;
+    width: 80%;
+    margin-top: 20px;
+    font-size: 20pt;
+    font-weight: bold;
 }
 ul {
     list-style: none;
     padding: 0;
 }
-
 .orange {
     background: orange;
+}
+.selectStyle {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 13pt;
+    border: 0px;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+.menuStyle {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ddd;
+    height: 760px;
 }
 </style>

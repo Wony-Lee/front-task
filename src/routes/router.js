@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import BodyContent from "../components/BodyContent";
-// import MenuList from "../components/MenuList";
 
 export default new VueRouter({
     mode: "history",
@@ -13,9 +12,5 @@ export default new VueRouter({
             path: "/menu/:menuid",
             components: BodyContent,
         },
-        // {
-        //     path: "/:menuid",
-        //     components: BodyContent,
-        // },
     ],
 });
