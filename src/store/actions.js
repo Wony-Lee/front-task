@@ -5,7 +5,8 @@ export default {
             .fetchMenuList()
             .then((data) => commit("setMenuList", data.data))
             .catch((err) => {
-                console.error(err);
+                // console.error(err);
+                console.log(err);
             });
     },
 };
